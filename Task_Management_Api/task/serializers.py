@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import Task, Category
+from .models import Task,Category
 
 #Creating serializer for category model
 class CategorySerializer(serializers.ModelSerializer):
-  class meta:
+  class Meta:
     model = Category
     fields = ['id','name']
 
@@ -11,9 +11,8 @@ class CategorySerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
   user = serializers.ReadOnlyField(source = 'user.username')
   category = CategorySerializer(read_only = True)
-  category_id = serializers.PrimaryKeyRelatedField(queryset = Category.objects.all(), 
-                                                   source = 'Category',write_only = True,required = False)
-  class meta:
+  category_id = serializers.PrimaryKeyRelatedField(queryset = Category.objects.all(),source = 'Category',write_only = True,required = False)
+  class Meta:
     model = Task
     fields = ['id','user','title','description','due_date','priority','status','category','category_id']
     read_only_field = ['status','completed_at']
