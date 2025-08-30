@@ -17,7 +17,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
   serializer_class = CategorySerializer
   permission_classes = [permissions.IsAuthenticated]
 #method to list all categories
-  def get_category(self):
+  def get_queryset(self):
     Category.objects.filter(user = self.request.user)
 
   def perform_create(self, serializer):
