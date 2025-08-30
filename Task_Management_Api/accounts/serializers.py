@@ -24,12 +24,11 @@ from django.contrib.auth.models import User
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
-    class Meta:   # 👈 this was missing
+    class Meta:   
         model = User
         fields = ['id', 'username', 'email', 'password']
 
     def create(self, validated_data):
-        # Use Django's create_user to hash the password properly
         user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
