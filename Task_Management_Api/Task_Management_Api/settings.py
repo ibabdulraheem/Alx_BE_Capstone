@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'account',
-    'tasks',
+    # 'accounts',
+    'task',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +127,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Adding rest_framework settings
 REST_FRAMEWORK = {
   'DEFAULT_AUTHENTICATION_CLASSES':[
-    'rest_framework.authentication.SessionAuthentication'
+    'rest_framework.authentication.SessionAuthentication',
     'rest_framework.authentication.TokenAuthentication'
   ],
   'DEFAULT_PERMISSION_CLASSES':[
