@@ -8,5 +8,6 @@ router.register(r'tasks',TaskViewSet,basename='tasks')
 router.register(r'categories',CategoryViewSet,basename='categories')
 
 urlpatterns = [
-  path('',include(router.urls))
+  path('',include(router.urls)),
+  path ('api/',include(router.urls)),
 ]
